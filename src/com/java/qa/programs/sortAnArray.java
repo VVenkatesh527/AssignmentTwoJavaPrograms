@@ -1,6 +1,5 @@
 package com.java.qa.programs;
 
-import java.util.Arrays;
 
 public class sortAnArray {
 
@@ -12,14 +11,29 @@ public class sortAnArray {
 		
 		for(int i = 0 ; i < output.length ; i++) {
 			
-			System.out.print(output[i] + ", ");
+			System.out.print(output[i] + " ");
 		}
 		
 	}
 
-	public static int[] sortArray(int[] input) {
+public static int[] sortArray(int[] input) {
+	
+		int[] output = new int[input.length];
+		for(int i = 0 ; i<input.length ; i++) {
+			for(int j =i+1; j<input.length ; j++) {
+				int temp = 0 ;
+				if(input[i] > input[j]) {
+					
+					temp = input[i];
+					input[i] = input[j];
+					input[j] = temp;
+				}
+				
+			}
+			output[i] = input[i];
+		}
+		return output;
 		
-		Arrays.sort(input);
-	return input;	
 	}
+
 }

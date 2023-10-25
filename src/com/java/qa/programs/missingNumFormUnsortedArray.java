@@ -1,7 +1,6 @@
 package com.java.qa.programs;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 
 public class missingNumFormUnsortedArray {
@@ -48,9 +47,22 @@ public class missingNumFormUnsortedArray {
 	}
 
 	public static int[] sortArray(int[] input) {
-
-		Arrays.sort(input);
-		return input;
+		
+		int[] output = new int[input.length];
+		for(int i = 0 ; i<input.length ; i++) {
+			for(int j =i+1; j<input.length ; j++) {
+				int temp = 0 ;
+				if(input[i] > input[j]) {
+					
+					temp = input[i];
+					input[i] = input[j];
+					input[j] = temp;
+				}
+				
+			}
+			output[i] = input[i];
+		}
+		return output;
 	}
 
 	public static int sumofNumber(int i, int num) {

@@ -1,7 +1,6 @@
 package com.java.qa.programs;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class getTargetIndexOfArray {
@@ -9,16 +8,20 @@ public class getTargetIndexOfArray {
 	public static void main(String[] args) {
 
 		int[] inputArray = {1,2,3,4,5,6};
-		int target = 7;
-		int output = getIndex(inputArray, target);
-		
-		System.out.println(output);
+		int[] input = sortArray(inputArray);
+		int target = 2;
+		int[] output = getIndex(input, target);
+		for(int i = 0 ;i < output.length ; i++) {
+		System.out.println(output[i] );
+		}
 	}
 
 	
-	public static int getIndex(int[] inputArray,int target) {
+	public static int[] getIndex(int[] inputArray,int target) {
 			
-		int output = 0;
+		int[] output = new int[2];
+		int firstElement = 0;
+		int lastElement = 0;
 		List<Integer> listedArray = new ArrayList<>();
 	    
 		if(inputArray.length<1){
@@ -29,14 +32,37 @@ public class getTargetIndexOfArray {
 				listedArray.add(inputArray[i]);
 			}
 			if(listedArray.contains(target)) {
-				 output = listedArray.indexOf(target);
+				
+				firstElement = listedArray.indexOf(target);
+				lastElement = listedArray.indexOf(target);
 			}
 			else {
-				output = -1;
-				return output;
+				firstElement = -1;
+				lastElement = -1;
+				}
 		}
+		output[0] = firstElement;
+		output[1] =lastElement;
+		return output;
+	}
+	
+	public static int[] sortArray(int[] input) {
 		
+		int[] output = new int[input.length];
+		for(int i = 0 ; i<input.length ; i++) {
+			for(int j =i+1; j<input.length ; j++) {
+				int temp = 0 ;
+				if(input[i] > input[j]) {
+					
+					temp = input[i];
+					input[i] = input[j];
+					input[j] = temp;
+				}
+				
+			}
+			output[i] = input[i];
 		}
 		return output;
 	}
+	
 }
